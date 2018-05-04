@@ -24,7 +24,7 @@ public class UserService {
         return user;
     }
 
-    @HystrixCommand(fallbackMethod = "defaultUserAsync")
+    @HystrixCommand
     public Future<User> getUserAsync(int userId) {
         return new AsyncResult<User>() {
             @Override
@@ -36,15 +36,5 @@ public class UserService {
 
     public User defaultUser(int userId) {
         return new User();
-    }
-
-
-    public Future<User> defaultUserAsync(int userId) {
-        return new AsyncResult<User>() {
-            @Override
-            public User invoke() {
-                return new User();
-            }
-        };
     }
 }

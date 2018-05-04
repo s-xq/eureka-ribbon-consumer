@@ -18,7 +18,7 @@ public class UserController {
     public String getUser() {
 //        return userService.getUser(new Random().nextInt(100)).toString();
         try {
-            return userService.getUserAsync(new Random().nextInt(100)).get(100, TimeUnit.MILLISECONDS).toString();
+            return userService.getUserAsync(new Random().nextInt(100)).get(1000, TimeUnit.MILLISECONDS).toString();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
