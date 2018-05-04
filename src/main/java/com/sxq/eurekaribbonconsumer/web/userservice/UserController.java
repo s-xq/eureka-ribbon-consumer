@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 public class UserController {
@@ -15,6 +16,14 @@ public class UserController {
 
     @RequestMapping(value = "getUser", method = RequestMethod.GET)
     public String getUser() {
-        return userService.getUser(new Random().nextInt(100)).toString();
+//        return userService.getUser(new Random().nextInt(100)).toString();
+        try {
+            return userService.getUserAsync(new Random().nextInt(100)).get(100, TimeUnit.MILLISECONDS).toString();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return null;
     }
+
+
 }
