@@ -4,6 +4,8 @@ public class User {
     private int mId;
     private String mName;
     private int mAge;
+    private String mTimeStamp;
+
 
     public int getId() {
         return mId;
@@ -29,12 +31,21 @@ public class User {
         mAge = age;
     }
 
+    public String getTimeStamp() {
+        return mTimeStamp;
+    }
+
+    public void setTimeStamp(String timeStamp) {
+        mTimeStamp = timeStamp;
+    }
+
     @Override
     public String toString() {
-        return String.format("[User] mId=%s, mName=%s, mAge=%s",
-                String.valueOf(mId).toString(),
-                String.valueOf(mName).toString(),
-                String.valueOf(mAge).toString());
+        return String.format("[User] mId=%s, mName=%s, mAge=%s,mTimeStamp=%s",
+                String.valueOf(mId),
+                String.valueOf(mName),
+                String.valueOf(mAge),
+                String.valueOf(mTimeStamp));
 
     }
 }
